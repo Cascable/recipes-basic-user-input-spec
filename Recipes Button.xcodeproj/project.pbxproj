@@ -12,20 +12,45 @@
 		501201C42112F22F009B58B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 501201C22112F22F009B58B2 /* Main.storyboard */; };
 		501201C62112F230009B58B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 501201C52112F230009B58B2 /* Assets.xcassets */; };
 		501201C92112F230009B58B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 501201C72112F230009B58B2 /* LaunchScreen.storyboard */; };
+		501201D12112F29A009B58B2 /* BasicUserInputDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501201D02112F29A009B58B2 /* BasicUserInputDevice.swift */; };
+		501201D921131461009B58B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501201D821131461009B58B2 /* AppDelegate.swift */; };
+		501201DB21131461009B58B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501201DA21131461009B58B2 /* ViewController.swift */; };
+		501201DD21131461009B58B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 501201DC21131461009B58B2 /* Assets.xcassets */; };
+		501201E021131461009B58B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 501201DE21131461009B58B2 /* Main.storyboard */; };
+		501201E621131472009B58B2 /* BasicUserInputDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501201D02112F29A009B58B2 /* BasicUserInputDevice.swift */; };
+		50A682B621131BD500E5B962 /* LayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A682B421131BD400E5B962 /* LayoutConstraintExtensions.swift */; };
+		50A682B721131BD500E5B962 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A682B521131BD400E5B962 /* ViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		501201BB2112F22F009B58B2 /* Recipes Button.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipes Button.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		501201BB2112F22F009B58B2 /* Recipes Button iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipes Button iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		501201BE2112F22F009B58B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		501201C02112F22F009B58B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		501201C32112F22F009B58B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		501201C52112F230009B58B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		501201C82112F230009B58B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		501201CA2112F230009B58B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		501201D02112F29A009B58B2 /* BasicUserInputDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicUserInputDevice.swift; sourceTree = "<group>"; };
+		501201D621131461009B58B2 /* Recipes Button Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipes Button Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		501201D821131461009B58B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		501201DA21131461009B58B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		501201DC21131461009B58B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		501201DF21131461009B58B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		501201E121131461009B58B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		501201E7211314A3009B58B2 /* Recipes Button Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Recipes Button Mac.entitlements"; sourceTree = "<group>"; };
+		50A682B421131BD400E5B962 /* LayoutConstraintExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraintExtensions.swift; sourceTree = "<group>"; };
+		50A682B521131BD400E5B962 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		501201B82112F22F009B58B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		501201D321131461009B58B2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,7 +63,9 @@
 		501201B22112F22F009B58B2 = {
 			isa = PBXGroup;
 			children = (
-				501201BD2112F22F009B58B2 /* Recipes Button */,
+				501201D02112F29A009B58B2 /* BasicUserInputDevice.swift */,
+				501201BD2112F22F009B58B2 /* Recipes Button iOS */,
+				501201D721131461009B58B2 /* Recipes Button Mac */,
 				501201BC2112F22F009B58B2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,12 +73,13 @@
 		501201BC2112F22F009B58B2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				501201BB2112F22F009B58B2 /* Recipes Button.app */,
+				501201BB2112F22F009B58B2 /* Recipes Button iOS.app */,
+				501201D621131461009B58B2 /* Recipes Button Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		501201BD2112F22F009B58B2 /* Recipes Button */ = {
+		501201BD2112F22F009B58B2 /* Recipes Button iOS */ = {
 			isa = PBXGroup;
 			children = (
 				501201BE2112F22F009B58B2 /* AppDelegate.swift */,
@@ -61,15 +89,30 @@
 				501201C72112F230009B58B2 /* LaunchScreen.storyboard */,
 				501201CA2112F230009B58B2 /* Info.plist */,
 			);
-			path = "Recipes Button";
+			path = "Recipes Button iOS";
+			sourceTree = "<group>";
+		};
+		501201D721131461009B58B2 /* Recipes Button Mac */ = {
+			isa = PBXGroup;
+			children = (
+				501201E7211314A3009B58B2 /* Recipes Button Mac.entitlements */,
+				50A682B421131BD400E5B962 /* LayoutConstraintExtensions.swift */,
+				50A682B521131BD400E5B962 /* ViewExtensions.swift */,
+				501201D821131461009B58B2 /* AppDelegate.swift */,
+				501201DA21131461009B58B2 /* ViewController.swift */,
+				501201DC21131461009B58B2 /* Assets.xcassets */,
+				501201DE21131461009B58B2 /* Main.storyboard */,
+				501201E121131461009B58B2 /* Info.plist */,
+			);
+			path = "Recipes Button Mac";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		501201BA2112F22F009B58B2 /* Recipes Button */ = {
+		501201BA2112F22F009B58B2 /* Recipes Button iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 501201CD2112F230009B58B2 /* Build configuration list for PBXNativeTarget "Recipes Button" */;
+			buildConfigurationList = 501201CD2112F230009B58B2 /* Build configuration list for PBXNativeTarget "Recipes Button iOS" */;
 			buildPhases = (
 				501201B72112F22F009B58B2 /* Sources */,
 				501201B82112F22F009B58B2 /* Frameworks */,
@@ -79,9 +122,26 @@
 			);
 			dependencies = (
 			);
-			name = "Recipes Button";
+			name = "Recipes Button iOS";
 			productName = "Recipes Button";
-			productReference = 501201BB2112F22F009B58B2 /* Recipes Button.app */;
+			productReference = 501201BB2112F22F009B58B2 /* Recipes Button iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		501201D521131461009B58B2 /* Recipes Button Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 501201E321131461009B58B2 /* Build configuration list for PBXNativeTarget "Recipes Button Mac" */;
+			buildPhases = (
+				501201D221131461009B58B2 /* Sources */,
+				501201D321131461009B58B2 /* Frameworks */,
+				501201D421131461009B58B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Recipes Button Mac";
+			productName = "Recipes Button Mac";
+			productReference = 501201D621131461009B58B2 /* Recipes Button Mac.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -96,6 +156,14 @@
 				TargetAttributes = {
 					501201BA2112F22F009B58B2 = {
 						CreatedOnToolsVersion = 9.4.1;
+					};
+					501201D521131461009B58B2 = {
+						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -112,7 +180,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				501201BA2112F22F009B58B2 /* Recipes Button */,
+				501201BA2112F22F009B58B2 /* Recipes Button iOS */,
+				501201D521131461009B58B2 /* Recipes Button Mac */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +197,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		501201D421131461009B58B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				501201DD21131461009B58B2 /* Assets.xcassets in Resources */,
+				501201E021131461009B58B2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -135,8 +213,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				501201D12112F29A009B58B2 /* BasicUserInputDevice.swift in Sources */,
 				501201C12112F22F009B58B2 /* ViewController.swift in Sources */,
 				501201BF2112F22F009B58B2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		501201D221131461009B58B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				501201E621131472009B58B2 /* BasicUserInputDevice.swift in Sources */,
+				501201DB21131461009B58B2 /* ViewController.swift in Sources */,
+				50A682B621131BD500E5B962 /* LayoutConstraintExtensions.swift in Sources */,
+				50A682B721131BD500E5B962 /* ViewExtensions.swift in Sources */,
+				501201D921131461009B58B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +248,14 @@
 				501201C82112F230009B58B2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		501201DE21131461009B58B2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				501201DF21131461009B58B2 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -282,7 +381,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EB5BP6YJ4R;
-				INFOPLIST_FILE = "Recipes Button/Info.plist";
+				INFOPLIST_FILE = "Recipes Button iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +399,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EB5BP6YJ4R;
-				INFOPLIST_FILE = "Recipes Button/Info.plist";
+				INFOPLIST_FILE = "Recipes Button iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +408,50 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		501201E421131461009B58B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Recipes Button Mac/Recipes Button Mac.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = EB5BP6YJ4R;
+				INFOPLIST_FILE = "Recipes Button Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "se.cascable.Recipes-Button-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		501201E521131461009B58B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Recipes Button Mac/Recipes Button Mac.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = EB5BP6YJ4R;
+				INFOPLIST_FILE = "Recipes Button Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "se.cascable.Recipes-Button-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -324,11 +467,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		501201CD2112F230009B58B2 /* Build configuration list for PBXNativeTarget "Recipes Button" */ = {
+		501201CD2112F230009B58B2 /* Build configuration list for PBXNativeTarget "Recipes Button iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				501201CE2112F230009B58B2 /* Debug */,
 				501201CF2112F230009B58B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		501201E321131461009B58B2 /* Build configuration list for PBXNativeTarget "Recipes Button Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				501201E421131461009B58B2 /* Debug */,
+				501201E521131461009B58B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
