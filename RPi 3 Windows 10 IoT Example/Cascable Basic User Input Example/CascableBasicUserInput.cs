@@ -51,6 +51,8 @@ namespace CascableBasicUserInputExample
         GattLocalCharacteristic remoteCanStopCharacteristic;
         GattLocalCharacteristic userMessageCharacteristic;
 
+        public event EventHandler StateChanged;
+
         public ButtonState continueButtonState { get; private set; } = ButtonState.Up;
         public ButtonState stopButtonState { get; private set; } = ButtonState.Up;
         public bool canContinue { get; private set; } = false;
@@ -112,6 +114,12 @@ namespace CascableBasicUserInputExample
         {
             continueButtonState = newState;
             notifyContinueButtonState();
+        }
+
+        public void updateStopButtonState(ButtonState newState)
+        {
+            stopButtonState = newState;
+            notifyStopButtonState();
         }
 
         private async void setup()
@@ -183,6 +191,7 @@ namespace CascableBasicUserInputExample
         private void subscribedClientsChanged(GattLocalCharacteristic sender, object args)
         {
             Debug.WriteLine("Subscribed clients changed!!");
+            StateChanged?.Invoke(this, null);
         }
 
         // ---- Write Event Handlers ----
@@ -204,6 +213,7 @@ namespace CascableBasicUserInputExample
                 var value = reader.ReadByte();
                 canContinue = value > 0;
                 Debug.WriteLine("Can Continue is now: {0}", canContinue);
+                StateChanged?.Invoke(this, null);
             }
 
             if (request.Option == GattWriteOption.WriteWithResponse)
@@ -231,6 +241,7 @@ namespace CascableBasicUserInputExample
                 var value = reader.ReadByte();
                 canStop = value > 0;
                 Debug.WriteLine("Can Stop is now: {0}", canStop);
+                StateChanged?.Invoke(this, null);
             }
 
             if (request.Option == GattWriteOption.WriteWithResponse)
@@ -258,7 +269,8 @@ namespace CascableBasicUserInputExample
                 if (bufferCount > 0) {
                     var stringValue = Encoding.UTF8.GetString(request.Value.ToArray());
                     userMessage = stringValue;
-                    Debug.WriteLine("User Message is now: {0}", userMessage);   
+                    Debug.WriteLine("User Message is now: {0}", userMessage);
+                    StateChanged?.Invoke(this, null);
                 }
             }
             catch { }
@@ -286,7 +298,7 @@ namespace CascableBasicUserInputExample
             var writer = new DataWriter();
             writer.ByteOrder = ByteOrder.LittleEndian;
             writer.WriteByte((byte)stopButtonState);
-            await continueButtonCharacteristic.NotifyValueAsync(writer.DetachBuffer());
+            await stopButtonCharacteristic.NotifyValueAsync(writer.DetachBuffer());
         }
 
         // ---- Read Event Handlers ----

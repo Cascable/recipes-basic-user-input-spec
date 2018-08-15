@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using System.Diagnostics;
+using System.Timers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,33 +26,104 @@ namespace CascableBasicUserInputExample
     {
 
         CascableBasicUserInput ble = new CascableBasicUserInput();
-        GPIO gpio = new GPIO(5);
+        GPIO gpio = new GPIO(13, 20, 10, 7);
 
         public MainPage()
         {
             this.InitializeComponent();
-            gpio.GpioButtonDown += Gpio_GpioButtonDown;
-            gpio.GpioButtonUp += Gpio_GpioButtonUp;
+            gpio.GpioContinueButtonDown += Gpio_GpioContinueButtonDown;
+            gpio.GpioContinueButtonUp += Gpio_GpioContinueButtonUp;
+            gpio.GpioStopButtonDown += Gpio_GpioStopButtonDown;
+            gpio.GpioStopButtonUp += Gpio_GpioStopButtonUp;
+            ble.StateChanged += Ble_StateChanged;
+            StartBlinking();
         }
 
-        private void Gpio_GpioButtonUp(object sender, EventArgs e)
+        private Timer blinkTimer;
+
+        private void StartBlinking()
         {
+            if (blinkTimer == null)
+            {
+                blinkTimer = new Timer(500);
+                blinkTimer.AutoReset = true;
+                blinkTimer.Elapsed += BlinkTimer_Elapsed;
+                blinkTimer.Start();
+            }
+        }
+
+        private void BlinkTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            bool on = !gpio.continueLedOn;
+            gpio.setContinueLedOn(on);
+            gpio.setStopLedOn(on);
+        }
+
+        private void StopBlinking()
+        {
+            if (blinkTimer != null)
+            {
+                blinkTimer.Enabled = false;
+                blinkTimer.Stop();
+                blinkTimer.Dispose();
+                blinkTimer = null;
+                gpio.setContinueLedOn(false);
+                gpio.setStopLedOn(false);
+            }
+        }
+
+        private void Ble_StateChanged(object sender, EventArgs e)
+        {
+            if (ble.connected)
+            {
+                StopBlinking();
+                gpio.setContinueLedOn(ble.canContinue);
+                gpio.setStopLedOn(ble.canStop);
+            } else
+            {
+                StartBlinking();
+            }
+        }
+
+        private void Gpio_GpioContinueButtonUp(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Continue up");
             if (ble.connected)
             {
                 ble.updateContinueButtonState(CascableBasicUserInput.ButtonState.Up);
             }
         }
 
-        private void Gpio_GpioButtonDown(object sender, EventArgs e)
+        private void Gpio_GpioContinueButtonDown(object sender, EventArgs e)
         {
+            Debug.WriteLine("Continue down");
             if (ble.connected)
             {
                 ble.updateContinueButtonState(CascableBasicUserInput.ButtonState.Down);
             }
         }
 
+        private void Gpio_GpioStopButtonUp(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Stop up");
+            if (ble.connected)
+            {
+                ble.updateStopButtonState(CascableBasicUserInput.ButtonState.Up);
+            }
+        }
+
+        private void Gpio_GpioStopButtonDown(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Stop down");
+            if (ble.connected)
+            {
+                ble.updateStopButtonState(CascableBasicUserInput.ButtonState.Down);
+            }
+        }
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            StopBlinking();
             gpio.Dispose();
             gpio = null;
             ble.Dispose();
