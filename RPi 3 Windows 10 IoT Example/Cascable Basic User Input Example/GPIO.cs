@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.Devices.Gpio;
 using System.Diagnostics;
+using Windows.UI.Core;
 
 namespace CascableBasicUserInputExample
 {
@@ -20,12 +17,13 @@ namespace CascableBasicUserInputExample
         public bool stopButtonDown { get; private set; } = false;
         public bool stopLedOn { get; private set; } = false;
 
+        private CoreDispatcher eventDispatcher;
         public event EventHandler GpioContinueButtonDown;
         public event EventHandler GpioContinueButtonUp;
         public event EventHandler GpioStopButtonDown;
         public event EventHandler GpioStopButtonUp;
 
-        public GPIO(int continueButtonPinNumber, int continueLedPinNumber, int stopButtonPinNumber, int stopLedPinNumber)
+        public GPIO(int continueButtonPinNumber, int continueLedPinNumber, int stopButtonPinNumber, int stopLedPinNumber, CoreDispatcher dispatcher)
         {
             controller = GpioController.GetDefault();
             if (controller == null)
@@ -33,6 +31,8 @@ namespace CascableBasicUserInputExample
                 Debug.WriteLine("GPIO failed!");
                 throw new Exception();
             }
+
+            eventDispatcher = dispatcher;
 
             continueButtonPin = controller.OpenPin(continueButtonPinNumber);
             continueButtonPin.SetDriveMode(GpioPinDriveMode.InputPullUp);
@@ -73,36 +73,43 @@ namespace CascableBasicUserInputExample
             }
         }
 
-        private void ContinueButtonPin_ValueChanged(GpioPin sender, GpioPinValueChangedEventArgs args)
+        private async void ContinueButtonPin_ValueChanged(GpioPin sender, GpioPinValueChangedEventArgs args)
         {
-            bool wasDown = continueButtonDown;
-            continueButtonDown = (sender.Read() == GpioPinValue.Low);
-            if (wasDown != continueButtonDown)
-            {
-                if (continueButtonDown) {
-                    GpioContinueButtonDown?.Invoke(this, null);
-                } else
+            await eventDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+                bool wasDown = continueButtonDown;
+                continueButtonDown = (sender.Read() == GpioPinValue.Low);
+                if (wasDown != continueButtonDown)
                 {
-                    GpioContinueButtonUp?.Invoke(this, null);
+                    if (continueButtonDown)
+                    {
+                        GpioContinueButtonDown?.Invoke(this, null);
+                    }
+                    else
+                    {
+                        GpioContinueButtonUp?.Invoke(this, null);
+                    }
                 }
-            }
+            });
         }
 
-        private void StopButtonPin_ValueChanged(GpioPin sender, GpioPinValueChangedEventArgs args)
+        private async void StopButtonPin_ValueChanged(GpioPin sender, GpioPinValueChangedEventArgs args)
         {
-            bool wasDown = stopButtonDown;
-            stopButtonDown = (sender.Read() == GpioPinValue.Low);
-            if (wasDown != stopButtonDown)
+            await eventDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                if (stopButtonDown)
+                bool wasDown = stopButtonDown;
+                stopButtonDown = (sender.Read() == GpioPinValue.Low);
+                if (wasDown != stopButtonDown)
                 {
-                    GpioStopButtonDown?.Invoke(this, null);
+                    if (stopButtonDown)
+                    {
+                        GpioStopButtonDown?.Invoke(this, null);
+                    }
+                    else
+                    {
+                        GpioStopButtonUp?.Invoke(this, null);
+                    }
                 }
-                else
-                {
-                    GpioStopButtonUp?.Invoke(this, null);
-                }
-            }
+            });
         }
 
         ~GPIO() {

@@ -5,6 +5,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Storage.Streams;
+using Windows.UI.Core;
 
 namespace CascableBasicUserInputExample
 {
@@ -44,6 +45,7 @@ namespace CascableBasicUserInputExample
             Cancelled = 0x02
         }
 
+        CoreDispatcher eventDispatcher;
         GattServiceProvider cascableService;
         GattLocalCharacteristic continueButtonCharacteristic;
         GattLocalCharacteristic stopButtonCharacteristic;
@@ -66,7 +68,8 @@ namespace CascableBasicUserInputExample
             }
         }
         
-        public CascableBasicUserInput() {
+        public CascableBasicUserInput(CoreDispatcher dispatcher) {
+            eventDispatcher = dispatcher;
             setup();
         }
 
@@ -188,10 +191,13 @@ namespace CascableBasicUserInputExample
             Debug.WriteLine("Service is now advertising!");
         }
 
-        private void subscribedClientsChanged(GattLocalCharacteristic sender, object args)
+        private async void subscribedClientsChanged(GattLocalCharacteristic sender, object args)
         {
-            Debug.WriteLine("Subscribed clients changed!!");
-            StateChanged?.Invoke(this, null);
+            await eventDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Debug.WriteLine("Subscribed clients changed!!");
+                StateChanged?.Invoke(this, null);
+            });
         }
 
         // ---- Write Event Handlers ----
@@ -211,9 +217,12 @@ namespace CascableBasicUserInputExample
             if (reader.UnconsumedBufferLength > 0)
             {
                 var value = reader.ReadByte();
-                canContinue = value > 0;
-                Debug.WriteLine("Can Continue is now: {0}", canContinue);
-                StateChanged?.Invoke(this, null);
+                await eventDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    canContinue = value > 0;
+                    Debug.WriteLine("Can Continue is now: {0}", canContinue);
+                    StateChanged?.Invoke(this, null);
+                });
             }
 
             if (request.Option == GattWriteOption.WriteWithResponse)
@@ -239,9 +248,12 @@ namespace CascableBasicUserInputExample
             if (reader.UnconsumedBufferLength > 0)
             {
                 var value = reader.ReadByte();
-                canStop = value > 0;
-                Debug.WriteLine("Can Stop is now: {0}", canStop);
-                StateChanged?.Invoke(this, null);
+                await eventDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    canStop = value > 0;
+                    Debug.WriteLine("Can Stop is now: {0}", canStop);
+                    StateChanged?.Invoke(this, null);
+                });
             }
 
             if (request.Option == GattWriteOption.WriteWithResponse)
@@ -268,9 +280,12 @@ namespace CascableBasicUserInputExample
                 var bufferCount = request.Value.Length;
                 if (bufferCount > 0) {
                     var stringValue = Encoding.UTF8.GetString(request.Value.ToArray());
-                    userMessage = stringValue;
-                    Debug.WriteLine("User Message is now: {0}", userMessage);
-                    StateChanged?.Invoke(this, null);
+                    await eventDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                    {
+                        userMessage = stringValue;
+                        Debug.WriteLine("User Message is now: {0}", userMessage);
+                        StateChanged?.Invoke(this, null);
+                    });
                 }
             }
             catch { }

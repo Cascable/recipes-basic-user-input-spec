@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using System.Diagnostics;
 using System.Timers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,17 +14,21 @@ namespace CascableBasicUserInputExample
     public sealed partial class MainPage : Page
     {
 
-        CascableBasicUserInput ble = new CascableBasicUserInput();
-        GPIO gpio = new GPIO(13, 20, 10, 7);
+        CascableBasicUserInput ble;
+        GPIO gpio;
 
         public MainPage()
         {
             this.InitializeComponent();
+            gpio = new GPIO(13, 21, 10, 7, Dispatcher);
             gpio.GpioContinueButtonDown += Gpio_GpioContinueButtonDown;
             gpio.GpioContinueButtonUp += Gpio_GpioContinueButtonUp;
             gpio.GpioStopButtonDown += Gpio_GpioStopButtonDown;
             gpio.GpioStopButtonUp += Gpio_GpioStopButtonUp;
+
+            ble = new CascableBasicUserInput(Dispatcher);
             ble.StateChanged += Ble_StateChanged;
+
             StartBlinking();
         }
 
