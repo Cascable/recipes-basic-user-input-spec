@@ -9,7 +9,11 @@ using Windows.UI.Core;
 
 namespace CascableBasicUserInputExample
 {
-    class CascableBasicUserInput: IDisposable
+    /// <summary>
+    /// The CascableBasicUserInputExample class implements the Cascable Basic User Input Bluetooth LE spec using 
+    /// Windows' Bluetooth SDKs.
+    /// </summary>
+    class CascableBasicUserInput : IDisposable
     {
         static Guid cascableBasicUserInputServiceGuid = Guid.Parse("9A43142A-F619-41FF-945D-527023EF5B9D");
         static Guid continueButtonDownCharacteristicGuid = Guid.Parse("EB366CE4-1952-4A55-A319-7E27A865554A");
@@ -38,6 +42,9 @@ namespace CascableBasicUserInputExample
             IsConnectable = true
         };
 
+        /// <summary>
+        /// Cascable button states are represented as a single byte.
+        /// </summary>
         public enum ButtonState : byte
         {
             Up = 0x00,
@@ -53,17 +60,45 @@ namespace CascableBasicUserInputExample
         GattLocalCharacteristic remoteCanStopCharacteristic;
         GattLocalCharacteristic userMessageCharacteristic;
 
+        /// <summary>
+        /// Triggered when any remote state is changed - connected, canContinue, canStop, and userMessage.
+        /// </summary>
         public event EventHandler StateChanged;
 
+        /// <summary>
+        /// The current state of the continue button. Set locally.
+        /// </summary>
         public ButtonState continueButtonState { get; private set; } = ButtonState.Up;
+
+        /// <summary>
+        /// The current state of the stop button. Set locally.
+        /// </summary>
         public ButtonState stopButtonState { get; private set; } = ButtonState.Up;
+
+        /// <summary>
+        /// If set to <code>true</code>, Cascable is waiting for input, and this device is allowed to continue recipe execution.
+        /// </summary>
         public bool canContinue { get; private set; } = false;
+
+        /// <summary>
+        /// If set to <code>true</code>, this device is allowed to stop recipe execution.
+        /// </summary>
         public bool canStop { get; private set; } = false;
+
+        /// <summary>
+        /// The current user message. Can be null.
+        /// </summary>
         public String userMessage { get; private set; } = null;
+
+        /// <summary>
+        /// Returns <code>true</code> if Cascable is connected to this device, otherwise <code>false</code>.
+        /// </summary>
         public bool connected
         {
             get
             {
+                // The only required characteristic is the continue button state characteristic, so clients
+                // should consider Cascable to be "connected" when they have a subscriber to the continue button state.
                 return continueButtonCharacteristic?.SubscribedClients.Count > 0;
             }
         }
@@ -80,6 +115,7 @@ namespace CascableBasicUserInputExample
 
         public void Dispose()
         {
+            // Windows BLE seems to get unreliable if services etc aren't disposed correctly.
             if (continueButtonCharacteristic != null)
             {
                 continueButtonCharacteristic.ReadRequested -= readContinueButtonValue;
@@ -113,12 +149,20 @@ namespace CascableBasicUserInputExample
             }
         }
 
+        /// <summary>
+        /// Inform connected client(s) of a new continue button state.
+        /// </summary>
+        /// <param name="newState">The state of the continue button.</param>
         public void updateContinueButtonState(ButtonState newState)
         {
             continueButtonState = newState;
             notifyContinueButtonState();
         }
 
+        /// <summary>
+        /// Inform connected client(s) of a new stop button state.
+        /// </summary>
+        /// <param name="newState">The state of the stop button.</param>
         public void updateStopButtonState(ButtonState newState)
         {
             stopButtonState = newState;
@@ -208,11 +252,12 @@ namespace CascableBasicUserInputExample
             var request = await args.GetRequestAsync();
             if (request == null)
             {
-                Debug.WriteLine("Write of Can Continue had a null request!!");
+                Debug.WriteLine("Write of Can Continue had a null request! Make sure the application manifest allows Bluetooth access.");
                 deferral.Complete();
                 return;
             }
 
+            // The "Can Continue" characteristic is a single byte of data - 0 for false, and 1 for true.
             var reader = DataReader.FromBuffer(request.Value);
             if (reader.UnconsumedBufferLength > 0)
             {
@@ -239,11 +284,12 @@ namespace CascableBasicUserInputExample
             var request = await args.GetRequestAsync();
             if (request == null)
             {
-                Debug.WriteLine("Write of Can Stop had a null request!!");
+                Debug.WriteLine("Write of Can Stop had a null request! Make sure the application manifest allows Bluetooth access.");
                 deferral.Complete();
                 return;
             }
 
+            // The "Can Stop" characteristic is a single byte of data - 0 for false, and 1 for true.
             var reader = DataReader.FromBuffer(request.Value);
             if (reader.UnconsumedBufferLength > 0)
             {
@@ -270,13 +316,15 @@ namespace CascableBasicUserInputExample
             var request = await args.GetRequestAsync();
             if (request == null)
             {
-                Debug.WriteLine("Write of User Message had a null request!!");
+                Debug.WriteLine("Write of User Message had a null request! Make sure the application manifest allows Bluetooth access.");
                 deferral.Complete();
                 return;
             }
 
             try
             {
+                // The "User Message" characteristic contains a UTF-8 string. 
+                // It's valid for the app to send a zero-length payload here, which means "no custom message".
                 var bufferCount = request.Value.Length;
                 if (bufferCount > 0) {
                     var stringValue = Encoding.UTF8.GetString(request.Value.ToArray());
@@ -284,6 +332,15 @@ namespace CascableBasicUserInputExample
                     {
                         userMessage = stringValue;
                         Debug.WriteLine("User Message is now: {0}", userMessage);
+                        StateChanged?.Invoke(this, null);
+                    });
+                } else
+                {
+                    // If we have an empty buffer, we should null out the string.
+                    await eventDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                    {
+                        userMessage = null;
+                        Debug.WriteLine("User Message is now empty");
                         StateChanged?.Invoke(this, null);
                     });
                 }
