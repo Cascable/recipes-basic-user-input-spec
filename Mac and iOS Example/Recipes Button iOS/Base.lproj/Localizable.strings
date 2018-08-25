@@ -1,0 +1,17 @@
+/* 
+  Localized.strings
+  Recipes Button
+
+  Created by Daniel Kennett on 2018-08-25.
+  Copyright © 2018 Cascable AB. All rights reserved.
+*/
+
+"BLENotAvailableTitle" = "Bluetooth Not Available";
+"BLENotAvailableMessage" = "Make sure Bluetooth is turned on in your %@'s Settings app.";
+
+"BLEWaitingForConnectionTitle" = "Waiting for connection…";
+"BLEWaitingForConnectionMessage" = "This %@ can be used as an input for Cascable Recipes running on another device.\n\nTo get started, run a Recipe that uses a \"Wait for Input\" block on the other device.";
+
+"RecipeRunningStateTitle" = "Recipe running…";
+"RecipeWaitingStateTitle" = "Waiting to Continue";
+"DefaultUserMessage" = "Tap the \"Continue Recipe\" button to continue.";

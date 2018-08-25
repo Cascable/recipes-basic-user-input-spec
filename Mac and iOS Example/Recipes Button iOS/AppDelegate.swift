@@ -8,14 +8,18 @@
 
 import UIKit
 
+struct Colors {
+    static let tintColor = UIColor(displayP3Red: 0.134, green: 0.71, blue: 0.451, alpha: 1.0)
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UIButton.appearance().tintColor = Colors.tintColor
         return true
     }
 

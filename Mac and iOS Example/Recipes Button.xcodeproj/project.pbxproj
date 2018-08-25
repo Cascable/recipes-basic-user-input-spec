@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		501201BF2112F22F009B58B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501201BE2112F22F009B58B2 /* AppDelegate.swift */; };
-		501201C12112F22F009B58B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501201C02112F22F009B58B2 /* ViewController.swift */; };
+		501201C12112F22F009B58B2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501201C02112F22F009B58B2 /* BaseViewController.swift */; };
 		501201C42112F22F009B58B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 501201C22112F22F009B58B2 /* Main.storyboard */; };
 		501201C62112F230009B58B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 501201C52112F230009B58B2 /* Assets.xcassets */; };
 		501201C92112F230009B58B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 501201C72112F230009B58B2 /* LaunchScreen.storyboard */; };
@@ -20,12 +20,15 @@
 		501201E621131472009B58B2 /* BasicUserInputDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501201D02112F29A009B58B2 /* BasicUserInputDevice.swift */; };
 		50A682B621131BD500E5B962 /* LayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A682B421131BD400E5B962 /* LayoutConstraintExtensions.swift */; };
 		50A682B721131BD500E5B962 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A682B521131BD400E5B962 /* ViewExtensions.swift */; };
+		50B526362131C5E400FAF8E3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50B526342131C5E400FAF8E3 /* Localizable.strings */; };
+		50B526382131C7C300FAF8E3 /* RemoteInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B526372131C7C300FAF8E3 /* RemoteInputViewController.swift */; };
+		50B5263C2131CFBB00FAF8E3 /* PillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5263B2131CFBB00FAF8E3 /* PillButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		501201BB2112F22F009B58B2 /* Recipes Button iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipes Button iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		501201BE2112F22F009B58B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		501201C02112F22F009B58B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		501201C02112F22F009B58B2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		501201C32112F22F009B58B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		501201C52112F230009B58B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		501201C82112F230009B58B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +43,9 @@
 		501201E7211314A3009B58B2 /* Recipes Button Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Recipes Button Mac.entitlements"; sourceTree = "<group>"; };
 		50A682B421131BD400E5B962 /* LayoutConstraintExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraintExtensions.swift; sourceTree = "<group>"; };
 		50A682B521131BD400E5B962 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		50B526352131C5E400FAF8E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		50B526372131C7C300FAF8E3 /* RemoteInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteInputViewController.swift; sourceTree = "<group>"; };
+		50B5263B2131CFBB00FAF8E3 /* PillButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +89,13 @@
 			isa = PBXGroup;
 			children = (
 				501201BE2112F22F009B58B2 /* AppDelegate.swift */,
-				501201C02112F22F009B58B2 /* ViewController.swift */,
-				501201C22112F22F009B58B2 /* Main.storyboard */,
+				501201C02112F22F009B58B2 /* BaseViewController.swift */,
+				50B526372131C7C300FAF8E3 /* RemoteInputViewController.swift */,
+				50B5263B2131CFBB00FAF8E3 /* PillButton.swift */,
 				501201C52112F230009B58B2 /* Assets.xcassets */,
+				501201C22112F22F009B58B2 /* Main.storyboard */,
 				501201C72112F230009B58B2 /* LaunchScreen.storyboard */,
+				50B526342131C5E400FAF8E3 /* Localizable.strings */,
 				501201CA2112F230009B58B2 /* Info.plist */,
 			);
 			path = "Recipes Button iOS";
@@ -156,6 +165,11 @@
 				TargetAttributes = {
 					501201BA2112F22F009B58B2 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					501201D521131461009B58B2 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -191,6 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50B526362131C5E400FAF8E3 /* Localizable.strings in Resources */,
 				501201C92112F230009B58B2 /* LaunchScreen.storyboard in Resources */,
 				501201C62112F230009B58B2 /* Assets.xcassets in Resources */,
 				501201C42112F22F009B58B2 /* Main.storyboard in Resources */,
@@ -213,8 +228,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50B5263C2131CFBB00FAF8E3 /* PillButton.swift in Sources */,
 				501201D12112F29A009B58B2 /* BasicUserInputDevice.swift in Sources */,
-				501201C12112F22F009B58B2 /* ViewController.swift in Sources */,
+				50B526382131C7C300FAF8E3 /* RemoteInputViewController.swift in Sources */,
+				501201C12112F22F009B58B2 /* BaseViewController.swift in Sources */,
 				501201BF2112F22F009B58B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +273,14 @@
 				501201DF21131461009B58B2 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		50B526342131C5E400FAF8E3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50B526352131C5E400FAF8E3 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -382,6 +407,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EB5BP6YJ4R;
 				INFOPLIST_FILE = "Recipes Button iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -400,6 +426,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EB5BP6YJ4R;
 				INFOPLIST_FILE = "Recipes Button iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -6,24 +6,163 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Base View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Recipes_Button" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BaseViewController" customModule="Recipes_Button_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hlz-Pk-AJw">
+                                <rect key="frame" x="37.5" y="226.5" width="300" height="214"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for connection…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="52S-Td-b3U">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="31.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djv-m7-KWl">
+                                        <rect key="frame" x="0.0" y="61.5" width="300" height="152.5"/>
+                                        <string key="text">This device can be used as an input for Cascable Recipes running on another device.
+
+To get started, run a Recipe that uses a "Wait for Input" block on the other device.</string>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Djv-m7-KWl" secondAttribute="trailing" id="Cu1-kj-vKx"/>
+                                    <constraint firstItem="52S-Td-b3U" firstAttribute="top" secondItem="Hlz-Pk-AJw" secondAttribute="top" id="FWL-xo-4AH"/>
+                                    <constraint firstAttribute="trailing" secondItem="52S-Td-b3U" secondAttribute="trailing" id="bEV-HH-SZo"/>
+                                    <constraint firstAttribute="bottom" secondItem="Djv-m7-KWl" secondAttribute="bottom" id="bf9-kA-bjh"/>
+                                    <constraint firstItem="Djv-m7-KWl" firstAttribute="leading" secondItem="Hlz-Pk-AJw" secondAttribute="leading" id="jB0-RP-8Ii"/>
+                                    <constraint firstItem="52S-Td-b3U" firstAttribute="leading" secondItem="Hlz-Pk-AJw" secondAttribute="leading" id="on2-iK-k5g"/>
+                                    <constraint firstItem="Djv-m7-KWl" firstAttribute="top" secondItem="52S-Td-b3U" secondAttribute="bottom" constant="30" id="xa3-yV-eEJ"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJN-Lb-aNw">
+                                <rect key="frame" x="123" y="597" width="129" height="30"/>
+                                <state key="normal" title="More Information…"/>
+                                <connections>
+                                    <action selector="helpButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oSL-g7-yO5"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mJN-Lb-aNw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0XW-My-lkR"/>
+                            <constraint firstItem="Hlz-Pk-AJw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5yc-NE-pBg"/>
+                            <constraint firstItem="Hlz-Pk-AJw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="70o-pI-iAF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mJN-Lb-aNw" secondAttribute="bottom" constant="40" id="N6F-Q8-I5N"/>
+                            <constraint firstItem="Hlz-Pk-AJw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="mtf-zv-PDm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="helpButton" destination="mJN-Lb-aNw" id="qVm-89-zbm"/>
+                        <outlet property="messageLabel" destination="Djv-m7-KWl" id="yl5-1l-sVS"/>
+                        <outlet property="titleLabel" destination="52S-Td-b3U" id="oFn-ce-B82"/>
+                        <segue destination="dh9-rn-ddB" kind="presentation" identifier="showConnected" id="ics-LL-KY0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="390" y="141"/>
+        </scene>
+        <!--Remote Input View Controller-->
+        <scene sceneID="3er-rZ-Tqr">
+            <objects>
+                <viewController id="dh9-rn-ddB" customClass="RemoteInputViewController" customModule="Recipes_Button_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jgF-Nu-tUf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QK-is-1ox">
+                                <rect key="frame" x="146" y="597" width="83" height="30"/>
+                                <state key="normal" title="Stop Recipe"/>
+                                <connections>
+                                    <action selector="stopButtonDown:" destination="dh9-rn-ddB" eventType="touchDown" id="3WZ-S5-KP2"/>
+                                    <action selector="stopButtonUpInside:" destination="dh9-rn-ddB" eventType="touchUpInside" id="mYT-1l-MwP"/>
+                                    <action selector="stopButtonUpOutside:" destination="dh9-rn-ddB" eventType="touchCancel" id="cgw-na-oi5"/>
+                                    <action selector="stopButtonUpOutside:" destination="dh9-rn-ddB" eventType="touchUpOutside" id="yuH-Uc-OMh"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnQ-0J-5fs">
+                                <rect key="frame" x="38" y="248.5" width="300" height="170"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe running…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="X1e-L9-b1A">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="32"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the &quot;Continue Recipe&quot; button to continue." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7o-u6-6Fq">
+                                        <rect key="frame" x="0.0" y="61.5" width="300" height="42.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="NXY-KO-iJP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVO-ZI-qnw" customClass="PillButton" customModule="Recipes_Button_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="50" y="130" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="NC5-A2-oE2"/>
+                                            <constraint firstAttribute="height" constant="40" id="jc4-Jx-Xjl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Continue Recipe  →"/>
+                                        <connections>
+                                            <action selector="continueButtonDown:" destination="dh9-rn-ddB" eventType="touchDown" id="uWq-oZ-s1X"/>
+                                            <action selector="continueButtonUpInside:" destination="dh9-rn-ddB" eventType="touchUpInside" id="tPL-cN-sUc"/>
+                                            <action selector="continueButtonUpOutside:" destination="dh9-rn-ddB" eventType="touchCancel" id="2By-AN-3Fk"/>
+                                            <action selector="continueButtonUpOutside:" destination="dh9-rn-ddB" eventType="touchUpOutside" id="tMw-RO-ffB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="X1e-L9-b1A" secondAttribute="trailing" id="0XW-In-Z3L"/>
+                                    <constraint firstItem="a7o-u6-6Fq" firstAttribute="top" secondItem="X1e-L9-b1A" secondAttribute="bottom" constant="30" id="20x-Gg-M68"/>
+                                    <constraint firstAttribute="bottom" secondItem="pVO-ZI-qnw" secondAttribute="bottom" id="3sk-dh-Zty"/>
+                                    <constraint firstItem="pVO-ZI-qnw" firstAttribute="centerX" secondItem="mnQ-0J-5fs" secondAttribute="centerX" id="HWv-kd-zpv"/>
+                                    <constraint firstItem="pVO-ZI-qnw" firstAttribute="top" secondItem="a7o-u6-6Fq" secondAttribute="bottom" constant="26" id="Kky-Vp-aNW"/>
+                                    <constraint firstItem="a7o-u6-6Fq" firstAttribute="leading" secondItem="mnQ-0J-5fs" secondAttribute="leading" id="QyK-dS-zWJ"/>
+                                    <constraint firstItem="X1e-L9-b1A" firstAttribute="top" secondItem="mnQ-0J-5fs" secondAttribute="top" id="VCJ-1d-tlh"/>
+                                    <constraint firstAttribute="trailing" secondItem="a7o-u6-6Fq" secondAttribute="trailing" id="p4I-EN-njI"/>
+                                    <constraint firstItem="pVO-ZI-qnw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mnQ-0J-5fs" secondAttribute="leading" id="psQ-13-5Ks"/>
+                                    <constraint firstItem="X1e-L9-b1A" firstAttribute="leading" secondItem="mnQ-0J-5fs" secondAttribute="leading" id="vv6-qE-KIV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mnQ-0J-5fs" firstAttribute="centerY" secondItem="jgF-Nu-tUf" secondAttribute="centerY" id="CxQ-sy-iVb"/>
+                            <constraint firstItem="9QK-is-1ox" firstAttribute="centerX" secondItem="jgF-Nu-tUf" secondAttribute="centerX" id="QTM-sz-SiK"/>
+                            <constraint firstItem="9gZ-QD-kzu" firstAttribute="bottom" secondItem="9QK-is-1ox" secondAttribute="bottom" constant="40" id="TXq-tA-dl3"/>
+                            <constraint firstItem="mnQ-0J-5fs" firstAttribute="width" secondItem="jgF-Nu-tUf" secondAttribute="width" multiplier="0.8" id="Vlg-tM-L98"/>
+                            <constraint firstItem="mnQ-0J-5fs" firstAttribute="centerX" secondItem="jgF-Nu-tUf" secondAttribute="centerX" id="xba-mc-7jG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9gZ-QD-kzu"/>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="pVO-ZI-qnw" id="aCm-3J-ROP"/>
+                        <outlet property="recipeStatusLabel" destination="X1e-L9-b1A" id="9Nn-oF-HMn"/>
+                        <outlet property="stopButton" destination="9QK-is-1ox" id="hjh-uv-Htr"/>
+                        <outlet property="userMessageLabel" destination="a7o-u6-6Fq" id="ZFO-Fc-Inl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fND-Ce-YXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1144.8" y="140.77961019490255"/>
         </scene>
     </scenes>
 </document>
