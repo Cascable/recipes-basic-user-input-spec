@@ -19,33 +19,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hlz-Pk-AJw">
-                                <rect key="frame" x="37.5" y="226.5" width="300" height="214"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PnQ-Wl-hjV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="569"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for connection…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="52S-Td-b3U">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="31.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djv-m7-KWl">
-                                        <rect key="frame" x="0.0" y="61.5" width="300" height="152.5"/>
-                                        <string key="text">This device can be used as an input for Cascable Recipes running on another device.
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hlz-Pk-AJw">
+                                        <rect key="frame" x="43" y="177.5" width="290.5" height="214"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for connection…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="52S-Td-b3U">
+                                                <rect key="frame" x="0.0" y="0.0" width="290.5" height="31.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djv-m7-KWl">
+                                                <rect key="frame" x="0.0" y="61.5" width="290.5" height="152.5"/>
+                                                <string key="text">This device can be used as an input for Cascable Recipes running on another device.
 
 To get started, run a Recipe that uses a "Wait for Input" block on the other device.</string>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Djv-m7-KWl" secondAttribute="trailing" id="Cu1-kj-vKx"/>
+                                            <constraint firstItem="52S-Td-b3U" firstAttribute="top" secondItem="Hlz-Pk-AJw" secondAttribute="top" id="FWL-xo-4AH"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="HSL-Hs-b8k"/>
+                                            <constraint firstAttribute="trailing" secondItem="52S-Td-b3U" secondAttribute="trailing" id="bEV-HH-SZo"/>
+                                            <constraint firstAttribute="bottom" secondItem="Djv-m7-KWl" secondAttribute="bottom" id="bf9-kA-bjh"/>
+                                            <constraint firstItem="Djv-m7-KWl" firstAttribute="leading" secondItem="Hlz-Pk-AJw" secondAttribute="leading" id="jB0-RP-8Ii"/>
+                                            <constraint firstItem="52S-Td-b3U" firstAttribute="leading" secondItem="Hlz-Pk-AJw" secondAttribute="leading" id="on2-iK-k5g"/>
+                                            <constraint firstItem="Djv-m7-KWl" firstAttribute="top" secondItem="52S-Td-b3U" secondAttribute="bottom" constant="30" id="xa3-yV-eEJ"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Djv-m7-KWl" secondAttribute="trailing" id="Cu1-kj-vKx"/>
-                                    <constraint firstItem="52S-Td-b3U" firstAttribute="top" secondItem="Hlz-Pk-AJw" secondAttribute="top" id="FWL-xo-4AH"/>
-                                    <constraint firstAttribute="trailing" secondItem="52S-Td-b3U" secondAttribute="trailing" id="bEV-HH-SZo"/>
-                                    <constraint firstAttribute="bottom" secondItem="Djv-m7-KWl" secondAttribute="bottom" id="bf9-kA-bjh"/>
-                                    <constraint firstItem="Djv-m7-KWl" firstAttribute="leading" secondItem="Hlz-Pk-AJw" secondAttribute="leading" id="jB0-RP-8Ii"/>
-                                    <constraint firstItem="52S-Td-b3U" firstAttribute="leading" secondItem="Hlz-Pk-AJw" secondAttribute="leading" id="on2-iK-k5g"/>
-                                    <constraint firstItem="Djv-m7-KWl" firstAttribute="top" secondItem="52S-Td-b3U" secondAttribute="bottom" constant="30" id="xa3-yV-eEJ"/>
+                                    <constraint firstItem="Hlz-Pk-AJw" firstAttribute="centerX" secondItem="PnQ-Wl-hjV" secondAttribute="centerX" id="8Ie-5o-9Pt"/>
+                                    <constraint firstItem="Hlz-Pk-AJw" firstAttribute="width" secondItem="PnQ-Wl-hjV" secondAttribute="width" multiplier="0.7" priority="999" constant="28" id="Loc-ye-dA3"/>
+                                    <constraint firstItem="Hlz-Pk-AJw" firstAttribute="centerY" secondItem="PnQ-Wl-hjV" secondAttribute="centerY" id="dk5-3U-49I"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJN-Lb-aNw">
@@ -59,10 +70,13 @@ To get started, run a Recipe that uses a "Wait for Input" block on the other dev
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mJN-Lb-aNw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0XW-My-lkR"/>
-                            <constraint firstItem="Hlz-Pk-AJw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5yc-NE-pBg"/>
-                            <constraint firstItem="Hlz-Pk-AJw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="70o-pI-iAF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mJN-Lb-aNw" secondAttribute="bottom" constant="40" id="N6F-Q8-I5N"/>
-                            <constraint firstItem="Hlz-Pk-AJw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="mtf-zv-PDm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mJN-Lb-aNw" secondAttribute="bottom" constant="40" id="N6F-Q8-I5N">
+                                <variation key="heightClass=compact-widthClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="PnQ-Wl-hjV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aNY-IZ-dza"/>
+                            <constraint firstItem="mJN-Lb-aNw" firstAttribute="top" secondItem="PnQ-Wl-hjV" secondAttribute="bottom" constant="8" id="jAc-DA-hc6"/>
+                            <constraint firstItem="PnQ-Wl-hjV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mUx-sb-7bL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PnQ-Wl-hjV" secondAttribute="trailing" id="tqf-eU-Qaj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -75,7 +89,7 @@ To get started, run a Recipe that uses a "Wait for Input" block on the other dev
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="390" y="141"/>
+            <point key="canvasLocation" x="389.60000000000002" y="139.880059970015"/>
         </scene>
         <!--Remote Input View Controller-->
         <scene sceneID="3er-rZ-Tqr">
@@ -95,61 +109,75 @@ To get started, run a Recipe that uses a "Wait for Input" block on the other dev
                                     <action selector="stopButtonUpOutside:" destination="dh9-rn-ddB" eventType="touchUpOutside" id="yuH-Uc-OMh"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnQ-0J-5fs">
-                                <rect key="frame" x="38" y="248.5" width="300" height="170"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CLf-Fx-2UN">
+                                <rect key="frame" x="0.0" y="20" width="375" height="569"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe running…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="X1e-L9-b1A">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="32"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the &quot;Continue Recipe&quot; button to continue." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7o-u6-6Fq">
-                                        <rect key="frame" x="0.0" y="61.5" width="300" height="42.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnQ-0J-5fs">
+                                        <rect key="frame" x="57" y="199.5" width="262.5" height="170.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe running…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="X1e-L9-b1A">
+                                                <rect key="frame" x="0.5" y="0.0" width="262" height="32"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the &quot;Continue Recipe&quot; button to continue." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7o-u6-6Fq">
+                                                <rect key="frame" x="0.5" y="62" width="262" height="42.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="NXY-KO-iJP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVO-ZI-qnw" customClass="PillButton" customModule="Recipes_Button_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="31" y="130.5" width="200" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="NC5-A2-oE2"/>
+                                                    <constraint firstAttribute="height" constant="40" id="jc4-Jx-Xjl"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Continue Recipe  →"/>
+                                                <connections>
+                                                    <action selector="continueButtonDown:" destination="dh9-rn-ddB" eventType="touchDown" id="uWq-oZ-s1X"/>
+                                                    <action selector="continueButtonUpInside:" destination="dh9-rn-ddB" eventType="touchUpInside" id="tPL-cN-sUc"/>
+                                                    <action selector="continueButtonUpOutside:" destination="dh9-rn-ddB" eventType="touchCancel" id="2By-AN-3Fk"/>
+                                                    <action selector="continueButtonUpOutside:" destination="dh9-rn-ddB" eventType="touchUpOutside" id="tMw-RO-ffB"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="NXY-KO-iJP"/>
+                                            <constraint firstAttribute="trailing" secondItem="X1e-L9-b1A" secondAttribute="trailing" id="0XW-In-Z3L"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="1hf-cA-hBF"/>
+                                            <constraint firstItem="a7o-u6-6Fq" firstAttribute="top" secondItem="X1e-L9-b1A" secondAttribute="bottom" constant="30" id="20x-Gg-M68"/>
+                                            <constraint firstAttribute="bottom" secondItem="pVO-ZI-qnw" secondAttribute="bottom" id="3sk-dh-Zty"/>
+                                            <constraint firstItem="pVO-ZI-qnw" firstAttribute="centerX" secondItem="mnQ-0J-5fs" secondAttribute="centerX" id="HWv-kd-zpv"/>
+                                            <constraint firstItem="pVO-ZI-qnw" firstAttribute="top" secondItem="a7o-u6-6Fq" secondAttribute="bottom" constant="26" id="Kky-Vp-aNW"/>
+                                            <constraint firstItem="a7o-u6-6Fq" firstAttribute="leading" secondItem="mnQ-0J-5fs" secondAttribute="leading" id="QyK-dS-zWJ"/>
+                                            <constraint firstItem="X1e-L9-b1A" firstAttribute="top" secondItem="mnQ-0J-5fs" secondAttribute="top" id="VCJ-1d-tlh"/>
+                                            <constraint firstAttribute="trailing" secondItem="a7o-u6-6Fq" secondAttribute="trailing" id="p4I-EN-njI"/>
+                                            <constraint firstItem="pVO-ZI-qnw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mnQ-0J-5fs" secondAttribute="leading" id="psQ-13-5Ks"/>
+                                            <constraint firstItem="X1e-L9-b1A" firstAttribute="leading" secondItem="mnQ-0J-5fs" secondAttribute="leading" id="vv6-qE-KIV"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVO-ZI-qnw" customClass="PillButton" customModule="Recipes_Button_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="50" y="130" width="200" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="NC5-A2-oE2"/>
-                                            <constraint firstAttribute="height" constant="40" id="jc4-Jx-Xjl"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Continue Recipe  →"/>
-                                        <connections>
-                                            <action selector="continueButtonDown:" destination="dh9-rn-ddB" eventType="touchDown" id="uWq-oZ-s1X"/>
-                                            <action selector="continueButtonUpInside:" destination="dh9-rn-ddB" eventType="touchUpInside" id="tPL-cN-sUc"/>
-                                            <action selector="continueButtonUpOutside:" destination="dh9-rn-ddB" eventType="touchCancel" id="2By-AN-3Fk"/>
-                                            <action selector="continueButtonUpOutside:" destination="dh9-rn-ddB" eventType="touchUpOutside" id="tMw-RO-ffB"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="X1e-L9-b1A" secondAttribute="trailing" id="0XW-In-Z3L"/>
-                                    <constraint firstItem="a7o-u6-6Fq" firstAttribute="top" secondItem="X1e-L9-b1A" secondAttribute="bottom" constant="30" id="20x-Gg-M68"/>
-                                    <constraint firstAttribute="bottom" secondItem="pVO-ZI-qnw" secondAttribute="bottom" id="3sk-dh-Zty"/>
-                                    <constraint firstItem="pVO-ZI-qnw" firstAttribute="centerX" secondItem="mnQ-0J-5fs" secondAttribute="centerX" id="HWv-kd-zpv"/>
-                                    <constraint firstItem="pVO-ZI-qnw" firstAttribute="top" secondItem="a7o-u6-6Fq" secondAttribute="bottom" constant="26" id="Kky-Vp-aNW"/>
-                                    <constraint firstItem="a7o-u6-6Fq" firstAttribute="leading" secondItem="mnQ-0J-5fs" secondAttribute="leading" id="QyK-dS-zWJ"/>
-                                    <constraint firstItem="X1e-L9-b1A" firstAttribute="top" secondItem="mnQ-0J-5fs" secondAttribute="top" id="VCJ-1d-tlh"/>
-                                    <constraint firstAttribute="trailing" secondItem="a7o-u6-6Fq" secondAttribute="trailing" id="p4I-EN-njI"/>
-                                    <constraint firstItem="pVO-ZI-qnw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mnQ-0J-5fs" secondAttribute="leading" id="psQ-13-5Ks"/>
-                                    <constraint firstItem="X1e-L9-b1A" firstAttribute="leading" secondItem="mnQ-0J-5fs" secondAttribute="leading" id="vv6-qE-KIV"/>
+                                    <constraint firstItem="mnQ-0J-5fs" firstAttribute="width" secondItem="CLf-Fx-2UN" secondAttribute="width" multiplier="0.7" priority="999" id="7Er-at-MdU"/>
+                                    <constraint firstItem="mnQ-0J-5fs" firstAttribute="centerY" secondItem="CLf-Fx-2UN" secondAttribute="centerY" id="hBy-sf-D0p"/>
+                                    <constraint firstItem="mnQ-0J-5fs" firstAttribute="centerX" secondItem="CLf-Fx-2UN" secondAttribute="centerX" id="jEX-Jd-DJ4"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mnQ-0J-5fs" firstAttribute="centerY" secondItem="jgF-Nu-tUf" secondAttribute="centerY" id="CxQ-sy-iVb"/>
+                            <constraint firstItem="9QK-is-1ox" firstAttribute="top" secondItem="CLf-Fx-2UN" secondAttribute="bottom" constant="8" id="Equ-gX-0ax"/>
+                            <constraint firstItem="CLf-Fx-2UN" firstAttribute="top" secondItem="9gZ-QD-kzu" secondAttribute="top" id="LzV-lN-uwb"/>
                             <constraint firstItem="9QK-is-1ox" firstAttribute="centerX" secondItem="jgF-Nu-tUf" secondAttribute="centerX" id="QTM-sz-SiK"/>
-                            <constraint firstItem="9gZ-QD-kzu" firstAttribute="bottom" secondItem="9QK-is-1ox" secondAttribute="bottom" constant="40" id="TXq-tA-dl3"/>
-                            <constraint firstItem="mnQ-0J-5fs" firstAttribute="width" secondItem="jgF-Nu-tUf" secondAttribute="width" multiplier="0.8" id="Vlg-tM-L98"/>
-                            <constraint firstItem="mnQ-0J-5fs" firstAttribute="centerX" secondItem="jgF-Nu-tUf" secondAttribute="centerX" id="xba-mc-7jG"/>
+                            <constraint firstItem="9gZ-QD-kzu" firstAttribute="bottom" secondItem="9QK-is-1ox" secondAttribute="bottom" constant="40" id="TXq-tA-dl3">
+                                <variation key="heightClass=compact-widthClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="CLf-Fx-2UN" firstAttribute="leading" secondItem="9gZ-QD-kzu" secondAttribute="leading" id="oab-97-7zU"/>
+                            <constraint firstItem="9gZ-QD-kzu" firstAttribute="trailing" secondItem="CLf-Fx-2UN" secondAttribute="trailing" id="wku-Mg-3vP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9gZ-QD-kzu"/>
                     </view>

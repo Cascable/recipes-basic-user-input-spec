@@ -4,6 +4,7 @@
 //
 //  Created by Daniel Kennett on 2018-08-02.
 //  Copyright © 2018 Cascable AB. All rights reserved.
+//  Licensed under the MIT license. For details, see LICENSE.md.
 //
 
 import UIKit

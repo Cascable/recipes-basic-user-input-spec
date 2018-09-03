@@ -1,3 +1,5 @@
+//  Licensed under the MIT license. For details, see LICENSE.md.
+
 import Cocoa
 
 extension NSLayoutConstraint {
