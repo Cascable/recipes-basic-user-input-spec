@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		507242AB214AA51C002A57BF /* Generate Version Header */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 507242AC214AA51C002A57BF /* Build configuration list for PBXAggregateTarget "Generate Version Header" */;
+			buildPhases = (
+				507242AF214AA527002A57BF /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Generate Version Header";
+			productName = "Generate Version Header";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		501201BF2112F22F009B58B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501201BE2112F22F009B58B2 /* AppDelegate.swift */; };
 		501201C12112F22F009B58B2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501201C02112F22F009B58B2 /* BaseViewController.swift */; };
@@ -24,6 +38,16 @@
 		50B526382131C7C300FAF8E3 /* RemoteInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B526372131C7C300FAF8E3 /* RemoteInputViewController.swift */; };
 		50B5263C2131CFBB00FAF8E3 /* PillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5263B2131CFBB00FAF8E3 /* PillButton.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		507242B0214AA533002A57BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 501201B32112F22F009B58B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 507242AB214AA51C002A57BF;
+			remoteInfo = "Generate Version Header";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		501201BB2112F22F009B58B2 /* Recipes Button iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipes Button iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +154,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				507242B1214AA533002A57BF /* PBXTargetDependency */,
 			);
 			name = "Recipes Button iOS";
 			productName = "Recipes Button";
@@ -165,6 +190,7 @@
 				TargetAttributes = {
 					501201BA2112F22F009B58B2 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -178,6 +204,9 @@
 								enabled = 1;
 							};
 						};
+					};
+					507242AB214AA51C002A57BF = {
+						CreatedOnToolsVersion = 10.0;
 					};
 				};
 			};
@@ -196,6 +225,7 @@
 			targets = (
 				501201BA2112F22F009B58B2 /* Recipes Button iOS */,
 				501201D521131461009B58B2 /* Recipes Button Mac */,
+				507242AB214AA51C002A57BF /* Generate Version Header */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +253,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		507242AF214AA527002A57BF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "GIT_RELEASE_VERSION=$(git describe --tags --always --dirty --long)\nGIT_RELEASE_VERSION=${GIT_RELEASE_VERSION/-0-/-}\n\nCOMMITS=$(git rev-list HEAD | wc -l)\nCOMMITS=$(($COMMITS))\n\nmkdir -p \"$BUILD_DIR\"\n\necho \"#define CBL_VERBOSE_VERSION ${GIT_RELEASE_VERSION#*v}\" > \"$BUILD_DIR/CBLVersions.h\"\necho \"#define CBL_BUNDLE_VERSION ${COMMITS}\" >> \"$BUILD_DIR/CBLVersions.h\"\n\ndefaults write \"$BUILD_DIR/CBLVersions.plist\" CBLVerboseVersionString \"${GIT_RELEASE_VERSION#*v}\"\ndefaults write \"$BUILD_DIR/CBLVersions.plist\" CFBundleVersion \"${COMMITS}\"\n\necho \"Written to $BUILD_DIR/CBLVersions.h\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		501201B72112F22F009B58B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -249,6 +299,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		507242B1214AA533002A57BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 507242AB214AA51C002A57BF /* Generate Version Header */;
+			targetProxy = 507242B0214AA533002A57BF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		501201C22112F22F009B58B2 /* Main.storyboard */ = {
@@ -407,6 +465,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EB5BP6YJ4R;
 				INFOPLIST_FILE = "Recipes Button iOS/Info.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
+				INFOPLIST_PREFIX_HEADER = "${BUILD_DIR}/CBLVersions.h";
+				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -414,7 +475,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "se.cascable.recipes-button";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -426,6 +487,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EB5BP6YJ4R;
 				INFOPLIST_FILE = "Recipes Button iOS/Info.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
+				INFOPLIST_PREFIX_HEADER = "${BUILD_DIR}/CBLVersions.h";
+				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -433,7 +497,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "se.cascable.recipes-button";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -482,6 +546,24 @@
 			};
 			name = Release;
 		};
+		507242AD214AA51C002A57BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EB5BP6YJ4R;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		507242AE214AA51C002A57BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EB5BP6YJ4R;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -508,6 +590,15 @@
 			buildConfigurations = (
 				501201E421131461009B58B2 /* Debug */,
 				501201E521131461009B58B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		507242AC214AA51C002A57BF /* Build configuration list for PBXAggregateTarget "Generate Version Header" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				507242AD214AA51C002A57BF /* Debug */,
+				507242AE214AA51C002A57BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
