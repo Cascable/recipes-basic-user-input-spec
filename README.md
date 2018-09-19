@@ -1,6 +1,6 @@
 # Cascable Recipes: Basic User Input
 
-**Important:** If you are a user of Cascable and are looking for a pre-built solution, we have Recipes Button apps on the iOS App Store and for Mac. This repository for building custom input devices, and requires at least some programming expertise.
+**Important:** If you are a user of Cascable and are looking for a pre-built solution, we the Cascable Recipe Input app on the [iOS App Store](https://itunes.apple.com/us/app/cascable-recipe-input/id1435071396?ls=1&mt=8). This repository for building custom input devices, and requires at least some programming expertise.
 
 ## Contents
 
