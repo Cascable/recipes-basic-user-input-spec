@@ -59,6 +59,8 @@ An example flow might look like this:
 
 This repository provides example implementations of the Basic User Input protocol for iOS, Mac, and Windows 10 IoT.
 
+If you'd like to quickly try out the iOS implementation, the Cascable Recipe Input app on the [iOS App Store](https://itunes.apple.com/us/app/cascable-recipe-input/id1435071396?ls=1&mt=8) is built from this repository, so you're running the exact same code.
+
 The Windows 10 IoT example is designed to work out-of-the box on our proof-of-concept "Bluetooth Remote Control" hardware project that's constructed from a Raspberry Pi and readily-available hobby components.
 
 <p align="center">
